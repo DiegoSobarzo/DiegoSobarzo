@@ -7,56 +7,113 @@ function App() {
       document.documentElement.classList.toggle('dark')
   };
 
+  const toggleMobileMenu = () =>{
+    const menu = document.getElementById("mobile-menu");
+    menu.classList.toggle("hidden")
+  }
+
   return (
     <>
-      <div className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-gray-200 supports-backdrop-blur:bg-white/95 dark:bg-slate-900/75">
-        <div className="max-w-8xl mx-auto">
-          <div className="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10 mx-4 lg:mx-0">
-            <div className="relative flex items-center">
-              <div className="relative">
-                <img src="src/assets/react.svg" className="w-10" alt="logo of diego sobarzo"/>
+    <div className="bg-white dark:bg-slate-800 flex flex-col h-screen justify-between">
+      <header id="Header" className="sticky top-0 z-30 w-screen px-6 bg-white dark:bg-slate-600">
+        {/**navbar*/}
+        <nav>
+          <div className="max-w-6xl mx-auto border">
+            <div className="flex justify-between">
+              <div className="flex space-x-4">
+                <div className="flex items-center space-x-2">
+                  {/**logo*/}
+                  <img className="w-20" src="src/assets/react.svg" alt="Web Site Logo" />
+                  {/**Name*/}
+                  <span className="font-extrabold"> DiegoSobarzo.dev</span>
+                </div>
               </div>
-              <div className="ml-2 -my-1 lg:hidden">
-                <button type="button">hola</button>
-              </div>
-              <div className="relative hidden lg:flex items-center ml-auto">
-                <nav className="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
-                  <ul className="flex space-x-8">
-                    <li><a className="hover:text-sky-500 dark:hover:text-sky-400" href="#">Home</a></li>
-                    <li><a className="hover:text-sky-500 dark:hover:text-sky-400"href="https://www.marca.com">Marca</a></li>
-                    <li><a className="hover:text-sky-500 dark:hover:text-sky-400"href="https://www.linkedin.com/in/diego-alexis-sobarzo-valencia/">LinkedIn</a></li>
-                  </ul>
-                </nav>
-                <div className="flex items-center border-l border-slate-200 ml-6 pl-6 dark:border-slate-800">
-                  <button type="button" onClick={toggleDarkMode}>
-                    <span className="dark:hidden">
-                      <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-                        <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" className="stroke-slate-400 dark:stroke-slate-500">
-                        </path>
-                        <path d="M12 4v1M17.66 6.344l-.828.828M20.005 12.004h-1M17.66 17.664l-.828-.828M12 20.01V19M6.34 17.664l.835-.836M3.995 12.004h1.01M6 6l.835.836" className="stroke-slate-400 dark:stroke-slate-500">
-                        </path>
-                      </svg>
-                    </span>
-                    <span className="hidden dark:inline">
-                      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-                        <path fillRule="evenodd" clipRule="evenodd" d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z" className="fill-transparent">
-                        </path>
-                        <path d="m17.715 15.15.95.316a1 1 0 0 0-1.445-1.185l.495.869ZM9 6.035l.846.534a1 1 0 0 0-1.14-1.49L9 6.035Zm8.221 8.246a5.47 5.47 0 0 1-2.72.718v2a7.47 7.47 0 0 0 3.71-.98l-.99-1.738Zm-2.72.718A5.5 5.5 0 0 1 9 9.5H7a7.5 7.5 0 0 0 7.5 7.5v-2ZM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47 0 0 0 7 9.5h2Zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2Zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2Zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552 0 6.553-2.327 7.622-5.537l-1.897-.632Z" className="fill-slate-400 dark:fill-slate-500">
-                        </path>
-                        <path fillRule="evenodd" clipRule="evenodd" d="M17 3a1 1 0 0 1 1 1 2 2 0 0 0 2 2 1 1 0 1 1 0 2 2 2 0 0 0-2 2 1 1 0 1 1-2 0 2 2 0 0 0-2-2 1 1 0 1 1 0-2 2 2 0 0 0 2-2 1 1 0 0 1 1-1Z" className="fill-slate-400 dark:fill-slate-500">
-                        </path>
+              <div className="flex space-x-2">
+                {/**secondary nav*/}
+                <div className="hidden md:flex items-center">
+                  <a className="px-4"href="#">Home</a>
+                  <a className="px-4"href="#">About Me</a>
+                  <a className="px-4"href="#">Resume</a>
+                  <a className="px-4"href="#">Portfolio</a>
+                  <a className="px-4"href="#">Contact</a>
+                  <button className="px-4" onClick={toggleDarkMode}>O</button>
+                </div>
+                <div className="md:hidden flex items-center" onClick={toggleMobileMenu}>
+                  <button id="mobile-menu-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                     </svg>
-                  </span>
                   </button>
                 </div>
               </div>
             </div>
           </div>
+          {/**mobile nav*/}
+          <div id="mobile-menu" className="hidden md:hidden sticky">
+            <a href="#" className="block py-2 px-4 text-sm hover:bg-slate-500">Home</a>
+            <a href="#" className="block py-2 px-4 text-sm hover:bg-slate-500">About</a>
+            <a href="#" className="block py-2 px-4 text-sm hover:bg-slate-500">Resume</a>
+            <a href="#" className="block py-2 px-4 text-sm hover:bg-slate-500">Portfolio</a>
+            <a href="#" className="block py-2 px-4 text-sm hover:bg-slate-500">Contact</a>
+            <a href="#" onClick={toggleDarkMode} className="block py-2 px-4 text-sm hover:bg-slate-500">O</a>
+          </div>
+        </nav>
+      </header>
+      {/**content*/}
+      <main id="Content">
+        <div className="py-32 text-center">
+          <h1 className="font-extrabold text-5xl">FullStack Developer</h1>
+          <p>Hello there! I'm Diego Sobarzo +5 pasionate fullstack developer with more than 8 years of experience</p>
         </div>
-      </div>    
-      <div className="bg-white dark:bg-slate-800 min-h-screen">
-        <h1 className="text-slate-900 dark:text-white mt-5 text-center font-medium tracking-tight">Diego Sobarzo</h1>
-      </div>
+
+        <div className="py-40 text-center">
+          <h1 className="text-4xl">About Me</h1>
+          <p></p>
+        </div>
+
+        <div className="py-40 text-center">
+          <h1 className="text-4xl">Resume</h1>
+          <h2>Job Experience</h2>
+            <h3>Sistemas Informatico Abiertos</h3>
+            <p></p>
+            <hr />
+            <h3>NFQ Advisory Services</h3>
+            <p></p>
+            <hr />
+            <h3>Oesia Networks</h3>
+            <p></p>
+          <h2>Education</h2>
+            <h3>C.F.G.S. Desarrollo de aplicaciones multiplataforma.</h3>
+            <h3>C.F.G.M. Sistemas Informaticos y Redes.</h3>
+          <h2>Certifications & languages</h2>
+        </div>
+
+        <div className="py-40 text-center">
+          <h1 className="text-4xl">Portfolio</h1>
+          <p>Proyects that i have developed over the years</p>
+          <hr />
+          <h2>Alvaro Health</h2>
+          <p>this is an app to help personal trainers to follow the progess of al theri students</p>
+          <hr/>
+          <h2>Poke Api Example</h2>
+          <p>This app is an example of fetching data from an external api and show it nicely</p>
+          <hr />
+          <h2></h2>
+        </div>
+
+        <div className="py-40 text-center">
+          <h1 className="text-4xl">Contact</h1>
+          <p>Ways to contact me</p>
+        </div>
+
+      </main>
+       {/**content*/}
+      <footer id="Footer" className="sticky bottom-0 z-30 w-screen px-6 bg-white dark:bg-slate-600">
+        <div className="min-w-full bg-slate-700 h-10">
+          2023
+        </div>
+      </footer>
+    </div>
     </>
   )
 }
